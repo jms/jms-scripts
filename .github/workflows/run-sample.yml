@@ -17,4 +17,5 @@ jobs:
     steps:
       - name: test-conditions
         run: |
+          echo "frontend: ${{ inputs.frontend}} | e2e_tests: ${{ inputs.e2e_tests }}"
           echo "fail_silently: ${{ inputs.frontend != 'true' && inputs.e2e_tests != 'true' }}"
