@@ -1,0 +1,20 @@
+name: Test booleans and conditions
+
+on:
+  workflow_dispatch:
+    inputs:
+      frontend:
+        description: 'Frontend has changed'
+        default: 'true'
+        type: string
+      e2e_tests:
+        description: 'e2e_tests has changed'
+        default: 'true'
+        type: string
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test-conditions
+        run: |
+          echo "fail_silently: ${{ inputs.frontend != 'true' && inputs.e2e_tests != 'true' }}"
